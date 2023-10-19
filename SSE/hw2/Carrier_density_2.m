@@ -1,0 +1,18 @@
+% subplot(1, 2, 1);
+N = 1024;
+k = 1.38e-23;
+T = 300;
+h = 6.626e-34;
+m_e = 9.1e-31 * 1.08;
+m_h = 9.1e-31 * 0.56;
+E_g = 1.12 * 1.6e-19;
+N_c = 2 * (2 * pi * m_e * k * T / h ^ 2);
+N_v = 2 * (2 * pi * m_h * k * T / h ^ 2);
+n_i = sqrt(N_c * N_v) * exp(-E_g/(2 * k * T));
+n = 10 .^ (12 + ([1:N] * 6 / N));
+E_Fe = k * T * log(n / n_i);
+E_Fp = -E_Fe;
+plot(n, E_Fe, n, E_Fp);
+xscale log;
+xlabel('N_d');
+ylabel('E_F');
