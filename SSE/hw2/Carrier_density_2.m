@@ -15,4 +15,4 @@ E_Fp = -E_Fe;
 plot(n, E_Fe, n, E_Fp);
 xscale log;
 xlabel('N_d');
-ylabel('E_F');
+ylabel('E_F-E_Fi');
