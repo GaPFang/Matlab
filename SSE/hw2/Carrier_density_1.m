@@ -13,9 +13,9 @@ N_v = @(T) 2 * ((2 * pi * m_h * k * T) / (h ^ 2)) ^ (3 / 2) * 1e-6;
 n_i = @(T) sqrt(N_c(T) * N_v(T)) * exp(-E_g / (2 * k * T));
 E_F = @(T, n) 0.5 * E_g - k * T * log(N_c(T) / (n));
 n_d = @(T, n) N_D / (1 + exp(((0.5 * E_g - E_D) - E_F(T, n)) / (k * T)) / g_d);
-f = @(T, n) (N_D - n_d(T, n)) / 2 + sqrt((N_D - n_d(T, n)) ^ 2 / 4 + (n_i(T) ^ 2)) - n;
+f = @(T, n) ((N_D - n_d(T, n)) / 2 + sqrt((N_D - n_d(T, n)) ^ 2 / 4 + (n_i(T) ^ 2))) - n;
 
-fimplicit(f, [50 300 0 3e15]);
+fimplicit(f, [50 300 1e14 3e15]);
 yscale log;
 xlabel("T(K)");
 ylabel("n(#/cm^3)");
